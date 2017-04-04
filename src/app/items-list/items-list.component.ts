@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ItemsListComponent implements OnInit {
   itemCreationStatus = 'No item was created!';
   itemName ='TestName';
+  itemCreated = false;
 
   constructor() { }
 
@@ -15,7 +16,8 @@ export class ItemsListComponent implements OnInit {
   }
 /**Shows the status of the creation. Two-Ways-Binding */
   onCreateItem(){
-    this.itemCreationStatus = 'Item was created!';
+    this.itemCreated = true;
+    this.itemCreationStatus = 'Item was created! Name is' + this.itemName;
   }
 
   onUpdateItemName(event: Event) {

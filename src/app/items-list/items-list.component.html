@@ -12,5 +12,7 @@
   (click)="onCreateItem()">Add Item</button>
 
 <!--Reapeats the same what was tipped in the input line-->
-<p>{{ itemCreationStatus }}</p>
+<!--<p>{{ itemCreationStatus }}</p>-->
+<!-- Structural Directive ngIf - is shown if the item was created, meaning itemCreated=true-->
+<p *ngIf="itemCreated"> Item was created, item's name is {{ itemName }} </p>
 
