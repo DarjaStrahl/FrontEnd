@@ -1,3 +1,16 @@
-<h2>
-  My first item!
-</h2>
+<label> Item's Name</label>
+
+<!--Input line-->
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="itemName">
+<p>{{ itemName }}</p>
+
+<button
+  class="btn btn-primary"
+  (click)="onCreateItem()">Add Item</button>
+
+<!--Reapeats the same what was tipped in the input line-->
+<p>{{ itemCreationStatus }}</p>
+

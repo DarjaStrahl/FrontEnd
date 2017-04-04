@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent implements OnInit {
+  itemCreationStatus = 'No item was created!';
+  itemName ='TestName';
 
   constructor() { }
 
   ngOnInit() {
   }
+/**Shows the status of the creation. Two-Ways-Binding */
+  onCreateItem(){
+    this.itemCreationStatus = 'Item was created!';
+  }
 
+  onUpdateItemName(event: Event) {
+    this.itemName = (<HTMLInputElement>event.target).value;
+  }
 }
