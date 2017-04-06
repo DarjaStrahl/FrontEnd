@@ -42,6 +42,7 @@ export class ItemsListComponent implements OnInit {
       );
   }
 
+
   onUpdateItemName(event: Event) {
     this.itemName = (<HTMLInputElement>event.target).value;
   }
