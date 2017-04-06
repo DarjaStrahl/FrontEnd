@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../server.service";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'app-items-list',
@@ -23,6 +24,7 @@ export class ItemsListComponent implements OnInit {
 
   ngOnInit() {
   }
+
 /**Shows the status of the creation. Two-Ways-Binding */
   onCreateItem(name:string){
     this.itemCreated = true;
@@ -39,7 +41,6 @@ export class ItemsListComponent implements OnInit {
         (error) => console.log(error)
       );
   }
-
 
   onUpdateItemName(event: Event) {
     this.itemName = (<HTMLInputElement>event.target).value;
