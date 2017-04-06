@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {ItemService} from "./server.service";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   title = 'My Wonder Checklist';
+
+  constructor (private itemService: ItemService) {}
+
+
 }

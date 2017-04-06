@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ItemService} from "../server.service";
 
 @Component({
   selector: 'app-items-list',
@@ -9,18 +10,36 @@ export class ItemsListComponent implements OnInit {
   itemCreationStatus = 'No item was created!';
   itemName ='TestName';
   itemCreated = false;
-  items = ['Wonder', 'Wonder 2'];
+  items = [
+     {
+        name:'Ice Cream'
+      },
+     {
+       name: 'Vacation on the beach'
+      }
+  ];
 
-  constructor() { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
   }
 /**Shows the status of the creation. Two-Ways-Binding */
-  onCreateItem(){
+  onCreateItem(name:string){
     this.itemCreated = true;
-    this.items.push(this.itemName);
+    this.items.push({
+      name: name,
+    });
     this.itemCreationStatus = 'Item was created! Name is' + this.itemName;
   }
+
+  onGet(){
+    this.itemService.getItems()
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
+  }
+
 
   onUpdateItemName(event: Event) {
     this.itemName = (<HTMLInputElement>event.target).value;
