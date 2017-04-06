@@ -29,7 +29,7 @@ export class ItemsListComponent implements OnInit {
   onCreateItem(name:string){
     this.itemCreated = true;
     this.items.push({
-      name: name,
+      name: this.itemName
     });
     this.itemCreationStatus = 'Item was created! Name is' + this.itemName;
   }

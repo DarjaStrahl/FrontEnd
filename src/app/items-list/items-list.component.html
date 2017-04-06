@@ -1,22 +1,30 @@
-<label> Item's Name</label>
 
-<!--Input line-->
-<input
-  type="text"
-  class="form-control"
-  [(ngModel)]="itemName">
-<p>{{ itemName }}</p>
+<div class="row">
+  <label> Item's Name</label>
 
-<button
-  class="btn btn-primary"
-  (click)="onCreateItem()">Add Item</button>
+  <!--Input line-->
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="itemName">
+  <p>{{ itemName }}</p>
 
-<br><br>
-<button class="btn btn-primary" (click)="onGet()">Get Items</button>
+  <br>
 
-<!--Reapeats the same what was tipped in the input line-->
-<!--<p>{{ itemCreationStatus }}</p>-->
-<!-- Structural Directive ngIf - is shown if the item was created, meaning itemCreated=true-->
-<p *ngIf="itemCreated"> Item was created, item's name is {{ itemName }} </p>
+  <button
+    class="btn btn-primary"
+    (click)="onCreateItem()">Add Item</button>
 
-<app-item *ngFor="let thing of items"></app-item>
+  <button class="btn btn-primary" (click)="onGet()">Get Items</button>
+
+  <p *ngIf="itemCreated"> Item was created, item's name is {{ itemName }} </p>
+
+  <app-item *ngFor="let thing of items" [name] = itemName ></app-item>
+
+
+</div>
+
+
+
+
+
