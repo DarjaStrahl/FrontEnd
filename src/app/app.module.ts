@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ItemsListComponent } from './items-list/items-list.component';
 import { ItemComponent } from './item/item.component';
 
+import { ItemService } from './item.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +18,9 @@ import { ItemComponent } from './item/item.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ ItemService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -5,7 +5,8 @@
   type="text"
   class="form-control"
   [(ngModel)]="itemName">
-<p>{{ itemName }}</p>
+<!--<p>{{ itemName }}</p>-->
+<p></p>
 
 <button
   class="btn btn-primary"
@@ -17,3 +18,15 @@
 <p *ngIf="itemCreated"> Item was created, item's name is {{ itemName }} </p>
 
 <app-item *ngFor="let thing of items"></app-item>
+
+<hr>
+
+<h2>Items List:</h2>
+<ul class="itemsList">
+  <li *ngFor="let listItem of itemsList"
+      [class.selected]="listItem === selectedItem"
+      (click)="onSelect(listItem)">
+    <span class="badge">{{listItem.id}}</span> {{listItem.name}}
+    <input class="check" type="checkbox" [(ngModel)]="listItem.state"/>
+  </li>
+</ul>
