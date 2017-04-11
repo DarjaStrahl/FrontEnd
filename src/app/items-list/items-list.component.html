@@ -1,23 +1,12 @@
 <label> Item's Name</label>
 
-<!--Input line-->
 <input
   type="text"
   class="form-control"
   [(ngModel)]="itemName">
-<!--<p>{{ itemName }}</p>-->
 <p></p>
 
-<button
-  class="btn btn-primary"
-  (click)="onCreateItem()">Add Item</button>
-
-<!--Reapeats the same what was tipped in the input line-->
-<!--<p>{{ itemCreationStatus }}</p>-->
-<!-- Structural Directive ngIf - is shown if the item was created, meaning itemCreated=true-->
-<p *ngIf="itemCreated"> Item was created, item's name is {{ itemName }} </p>
-
-<app-item *ngFor="let thing of items"></app-item>
+<button class="btn btn-primary" (click)="onCreateItem()">Add Item</button>
 
 <hr>
 

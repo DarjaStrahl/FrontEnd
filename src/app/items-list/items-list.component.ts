@@ -9,57 +9,33 @@ import { ItemService } from '../item.service';
   styleUrls: ['./items-list.component.css']
 })
 
-export class ItemsListComponent implements OnInit{
+export class ItemsListComponent implements OnInit {
 
-  // itemCreationStatus = 'No item was created!';
   itemName ='New Item';
-  // itemCreated = false;
-  // items = ['Wonder', 'Wonder 2'];
-
   selectedItem: ItemComponent;
-  // itemsList: ItemComponent[];
-  itemsList = LIST;
+  itemsList: ItemComponent[];
+  errorMessage: String;
 
-  constructor(
-    private itemService: ItemService) {
-      this.selectedItem = this.itemsList[0];
-    }
+  constructor( private itemService: ItemService ) { }
 
-  getItems() {
-    this.itemService
-      .getItems()
-      .subscribe(
-        items => this.itemsList = items);
-  }
-
-  ngOnInit(): void {
+  ngOnInit( ) {
     this.getItems();
   }
 
-/**Shows the status of the creation. Two-Ways-Binding */
-
-  onCreateItem(){
-
-    // this.itemCreated = true;
-    // this.items.push(this.itemName);
-    // this.itemCreationStatus = 'Item was created! Name is' + this.itemName;
-
-    this.itemsList.push(new ItemComponent(this.itemsList.length + 1, this.itemName, false));
+  getItems( ) {
+    this.itemService
+      .getItems()
+      .subscribe(
+        items => this.itemsList = items,
+        error => this.errorMessage = <any>error);
   }
 
-  onSelect(item: ItemComponent): void {
+  onCreateItem( ) {
+    this.itemsList.push(new ItemComponent( this.itemsList.length + 1, this.itemName, false ));
+    //TODO: id must allways be unique (length+1==bad solution)!
+  }
+
+  onSelect( item: ItemComponent ): void {
     this.selectedItem = item;
   }
-
-  // onUpdateItemName(event: Event) {
-  //   this.itemName = (<HTMLInputElement>event.target).value;
-  // }
 }
-
-const LIST: ItemComponent[] = [
-  { id: 0, name: 'Item0', state: true },
-  { id: 1, name: 'Item1', state: true },
-  { id: 2, name: 'Item2', state: true },
-  { id: 3, name: 'Item3', state: false },
-  { id: 4, name: 'Item4', state: false }
-];

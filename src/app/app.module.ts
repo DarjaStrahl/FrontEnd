@@ -18,7 +18,7 @@ import { ItemService } from './item.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpModule
   ],
   providers: [ ItemService ],
   bootstrap: [ AppComponent ]
