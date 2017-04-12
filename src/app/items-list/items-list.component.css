@@ -46,5 +46,16 @@
   border-radius: 4px 0 0 4px;
 }
 .itemsList .check {
-  text-align: right;
+  float: right;
+  margin: 2px 5px;
+}
+.itemsList .delete {
+  background-color: red;
+  color: white;
+  float: right;
+  border: none;
+  padding: 0 4px;
+  margin: 2px 0;
+  font-size: 8px;
+  cursor: pointer;
 }

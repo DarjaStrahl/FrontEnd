@@ -35,7 +35,14 @@ export class ItemsListComponent implements OnInit {
     //TODO: id must allways be unique (length+1==bad solution)!
   }
 
-  onSelect( item: ItemComponent ): void {
+  onDeleteItem( listItem: ItemComponent) {
+    this.itemsList = this.itemsList.filter( i => i !== listItem );
+    if( this.selectedItem === listItem ) {
+      this.selectedItem = null;
+    }
+  }
+
+  onSelectItem( item: ItemComponent ): void {
     this.selectedItem = item;
   }
 }

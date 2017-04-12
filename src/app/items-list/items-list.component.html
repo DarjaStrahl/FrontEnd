@@ -14,8 +14,12 @@
 <ul class="itemsList">
   <li *ngFor="let listItem of itemsList"
       [class.selected]="listItem === selectedItem"
-      (click)="onSelect(listItem)">
-    <span class="badge">{{listItem.id}}</span> {{listItem.name}}
-    <input class="check" type="checkbox" [(ngModel)]="listItem.state"/>
+      (click)="onSelectItem( listItem )">
+    <span class="badge">{{ listItem.id }}</span>
+    <span class="title">{{ listItem.name }}</span>
+    <span>
+      <input class="check" type="checkbox" [(ngModel)]="listItem.state"/>
+      <button class="delete" (click)="onDeleteItem( listItem )">x</button>
+    </span>
   </li>
 </ul>
