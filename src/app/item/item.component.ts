@@ -1,16 +1,21 @@
-import {Component, OnInit, Input} from '@angular/core';
-import { ItemsListComponent } from  '../items-list/items-list.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
+
 export class ItemComponent {
 
-    @Input() name: ItemsListComponent;
+  id: number;
+  name: string;
+  state: boolean;
 
-  constructor() { }
-
-
+  constructor( id: number, name: string, state: boolean ) {
+    this.id = id;
+    this.name = name;
+    this.state = state;
+  }
 }
+

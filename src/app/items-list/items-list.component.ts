@@ -1,49 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from "../server.service";
-import {Response} from "@angular/http";
+
+import { ItemComponent } from "../item/item.component";
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-items-list',
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.css']
 })
+
 export class ItemsListComponent implements OnInit {
-  itemCreationStatus = 'No item was created!';
-  itemName ='TestName';
-  itemCreated = false;
-  items = [
-     {
-        name:'Ice Cream'
-      },
-     {
-       name: 'Vacation on the beach'
-      }
-  ];
 
-  constructor(private itemService: ItemService) { }
+  itemName ='New Item';
+  selectedItem: ItemComponent;
+  itemsList: ItemComponent[];
+  errorMessage: String;
 
-  ngOnInit() {
+  constructor( private itemService: ItemService ) { }
+
+  ngOnInit( ) {
+    this.getItems();
   }
 
-/**Shows the status of the creation. Two-Ways-Binding */
-  onCreateItem(name:string){
-    this.itemCreated = true;
-    this.items.push({
-      name: this.itemName
-    });
-    this.itemCreationStatus = 'Item was created! Name is' + this.itemName;
-  }
-
-  onGet(){
-    this.itemService.getItems()
+  getItems( ) {
+    this.itemService
+      .getItems()
       .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
-      );
+        items => this.itemsList = items,
+        error => this.errorMessage = <any>error);
   }
 
+  onCreateItem( ) {
+    this.itemsList.push(new ItemComponent( this.itemsList.length + 1, this.itemName, false ));
+    //TODO: id must allways be unique (length+1==bad solution)!
+  }
 
-  onUpdateItemName(event: Event) {
-    this.itemName = (<HTMLInputElement>event.target).value;
+  onSelect( item: ItemComponent ): void {
+    this.selectedItem = item;
   }
 }
