@@ -4,16 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ItemsListComponent } from './items-list/items-list.component';
-import { ItemComponent } from './item/item.component';
-
-import { ItemService } from './item.service';
+import { ItemService } from './item/item.service';
+import { ItemsComponent } from './items.component/items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsListComponent,
-    ItemComponent
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
